@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace dotnet.Models
 {
-    public class Charachter
+    public class Character
     {
         public int Id { get; set; }
         public string Name { get; set; } = "Frodo";
