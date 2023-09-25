@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotnet_7_learn.Models;
 
 namespace dotnet.Services.CharacterService
 {
@@ -12,25 +13,28 @@ namespace dotnet.Services.CharacterService
             new Character{Id = 1, Name = "Sam"}
         };
 
-        public List<Character> AddCharacter(Character newCharacter)
+        public async Task<ServiceResponse<List<Character>>> AddCharacter(Character newCharacter)
         {
-           Characters.Add(newCharacter);
-            return Characters;
+            var ServiceResponse = new ServiceResponse<List<Character>>();
+            Characters.Add(newCharacter);
+            ServiceResponse.Data = Characters;
+            return ServiceResponse;
         }
 
-        public List<Character> GetAllCharacters()
+        public async Task<ServiceResponse<List<Character>>> GetAllCharacters()
         {
-            return Characters;
+            var ServiceResponse = new ServiceResponse<List<Character>>();
+            ServiceResponse.Data = Characters;
+            return ServiceResponse;
         }
 
-        public Character GetCharacterById(int id)
+        public async Task<ServiceResponse<Character>> GetCharacterById(int id)
         {
+            var ServiceResponse = new ServiceResponse<Character>();
             var character = Characters.FirstOrDefault(c => c.Id == id);
+            ServiceResponse.Data = character;
+            return ServiceResponse;
 
-            if (character is not null)
-                return character;
-
-            throw new Exception("Character not found");
         }
     }
 }
