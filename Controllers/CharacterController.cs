@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using dotnet_7_learn.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace dotnet.Controllers
+namespace dotnet_7_learn.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -20,19 +20,19 @@ namespace dotnet.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<ServiceResponse<List<Character>>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDTO>>>> Get()
         {
             return Ok(await _characterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<List<Character>>>> GetSingle(int id)
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDTO>>>> GetSingle(int id)
         {
             return Ok(await _characterService.GetCharacterById(id));
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<Character>>>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<ServiceResponse<List<GetCharacterDTO>>>> AddCharacter(AddCharacterDTO newCharacter)
         {
             return Ok(await _characterService.AddCharacter(newCharacter));
         }

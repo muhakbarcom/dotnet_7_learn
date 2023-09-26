@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace dotnet_7_learn.Models
+namespace dotnet_7_learn.Dtos.Character
 {
-    public class Character
+    public class GetCharacterDTO
     {
         public int Id { get; set; }
         public string Name { get; set; } = "Frodo";

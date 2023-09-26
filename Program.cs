@@ -1,5 +1,8 @@
-global using dotnet.Models;
-global using dotnet.Services.CharacterService;
+global using dotnet_7_learn.Services.CharacterService;
+global using dotnet_7_learn.Models;
+global using dotnet_7_learn.Dtos.Character;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<iCharacterService, CharacterService>();
 
 var app = builder.Build();
